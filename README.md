@@ -1,5 +1,9 @@
 # event_ticketing
 
+
+Algorand Testnet Contract Address (Application ID): 746205764
+
+
 This starter full stack project has been generated using AlgoKit. See below for default getting started instructions.
 
 ## Setup

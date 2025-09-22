@@ -71,6 +71,7 @@ const CreateEvent = ({ openModal, closeModal }: CreateEventInterface) => {
     try {
       const txn = await eventTicketingClient.send.mintTicket({
         sender: activeAddress!,
+        args: []
       });
       console.log("NFT minted:", txn);
       alert("NFT ticket minted successfully!");
