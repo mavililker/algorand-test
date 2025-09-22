@@ -4,13 +4,15 @@ import React, { useState } from 'react'
 import ConnectWallet from './components/ConnectWallet'
 import Transact from './components/Transact'
 import AppCalls from './components/AppCalls'
+import CreateEvent from './components/CreateEvent'
 
-interface HomeProps {}
+interface HomeProps { }
 
 const Home: React.FC<HomeProps> = () => {
   const [openWalletModal, setOpenWalletModal] = useState<boolean>(false)
   const [openDemoModal, setOpenDemoModal] = useState<boolean>(false)
   const [appCallsDemoModal, setAppCallsDemoModal] = useState<boolean>(false)
+  const [openEventModal, setOpenEventModal] = useState<boolean>(false)
   const { activeAddress } = useWallet()
 
   const toggleWalletModal = () => {
@@ -23,6 +25,10 @@ const Home: React.FC<HomeProps> = () => {
 
   const toggleAppCallsModal = () => {
     setAppCallsDemoModal(!appCallsDemoModal)
+  }
+
+  const toggleEventModal = () => {
+    setOpenEventModal(!openEventModal)
   }
 
   return (
@@ -52,21 +58,14 @@ const Home: React.FC<HomeProps> = () => {
             </button>
 
             {activeAddress && (
-              <button data-test-id="transactions-demo" className="btn m-2" onClick={toggleDemoModal}>
-                Transactions Demo
-              </button>
-            )}
-
-            {activeAddress && (
-              <button data-test-id="appcalls-demo" className="btn m-2" onClick={toggleAppCallsModal}>
-                Contract Interactions Demo
+              <button data-test-id="create-event" className="btn m-2" onClick={toggleEventModal}>
+                Create Event
               </button>
             )}
           </div>
 
           <ConnectWallet openModal={openWalletModal} closeModal={toggleWalletModal} />
-          <Transact openModal={openDemoModal} setModalState={setOpenDemoModal} />
-          <AppCalls openModal={appCallsDemoModal} setModalState={setAppCallsDemoModal} />
+          <CreateEvent openModal={openEventModal} closeModal={toggleEventModal} />
         </div>
       </div>
     </div>

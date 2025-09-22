@@ -1,0 +1,1023 @@
+{
+  "version": 3,
+  "sources": [
+    "../../event_ticketing/contract.py"
+  ],
+  "mappings": ";;;;;;;;;;;;;;;;;;;;;AAIA;;AAAA;;;AAAA;;;;;;;;;;;;;;;;;AAAA;;;AAAA;;;;;;;;AAAA;;AAiCK;;AAAA;AAAA;AAAA;;AAAA;AAjCL;;;AAAA;;;AAiCK;;;AAAA;AAAA;AAAA;AAAA;;;AAAA;AAAA;AAAA;;;;;;AAAA;AAAA;AAAA;AAAA;;AALA;;AAAA;AAAA;AAAA;;AAAA;AAAA;;;AAAA;;AAlBA;;AAAA;AAAA;AAAA;;AAAA;AAVL;;;AAAA;;;AAAA;;;AAAA;;;AAAA;;;AAAA;;;AAAA;;;AAAA;;;AAAA;;;AAAA;AAAA;;;AAAA;AAUK;;;AAAA;;AAVL;;AAAA;;;;;;;;;AAUA;;;AAEe;;AAAQ;AAAR;AAAP;AACO;;AAAQ;AAAR;AAAP;AACO;;AAAQ;AAAR;AAAP;AACO;;AAAY;AAAZ;AAAP;AACA;;AAAA;AACA;;AAAA;AAEA;;;;;;;;;;;;AAAA;;AAAA;AACA;;;;;;;;;;;;AAAA;;AAAA;AACA;;;;;;;;;;;;AAAA;;AAAA;AACA;;;;;;;;;;;;;;;;AAAA;;AAAA;AACA;;;;;;;;;;;;;;AAAA;;AAAA;AACA;;;;;;;;;;;;;;;AAAA;;AAAA;AACA;AAAoB;AAApB;;AAMA;AAAA;AAAA;AAAA;AAAqB;AAArB;AAAA;AAAA;AAAA;;AAER;;;AAEe;;;;;;;;;AAAA;;AAAA;AAAP",
+  "op_pc_offset": 0,
+  "pc_events": {
+    "1": {
+      "subroutine": "algopy.arc4.ARC4Contract.approval_program",
+      "params": {},
+      "block": "main",
+      "stack_in": [],
+      "op": "intcblock 1 0"
+    },
+    "5": {
+      "op": "bytecblock \"\" \"tickets_sold\""
+    },
+    "21": {
+      "op": "txn NumAppArgs",
+      "defined_out": [
+        "tmp%0#1"
+      ],
+      "stack_out": [
+        "tmp%0#1"
+      ]
+    },
+    "23": {
+      "op": "bz main_bare_routing@8",
+      "stack_out": []
+    },
+    "26": {
+      "op": "pushbytess 0x3ea054c8 0x294014fe 0x02bece11 // method \"create_event(string,string,string,string,uint64,uint64)void\", method \"mint_ticket()void\", method \"hello(string)string\"",
+      "defined_out": [
+        "Method(create_event(string,string,string,string,uint64,uint64)void)",
+        "Method(hello(string)string)",
+        "Method(mint_ticket()void)"
+      ],
+      "stack_out": [
+        "Method(create_event(string,string,string,string,uint64,uint64)void)",
+        "Method(mint_ticket()void)",
+        "Method(hello(string)string)"
+      ]
+    },
+    "43": {
+      "op": "txna ApplicationArgs 0",
+      "defined_out": [
+        "Method(create_event(string,string,string,string,uint64,uint64)void)",
+        "Method(hello(string)string)",
+        "Method(mint_ticket()void)",
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "Method(create_event(string,string,string,string,uint64,uint64)void)",
+        "Method(mint_ticket()void)",
+        "Method(hello(string)string)",
+        "tmp%2#0"
+      ]
+    },
+    "46": {
+      "op": "match main_create_event_route@3 main_mint_ticket_route@4 main_hello_route@5",
+      "stack_out": []
+    },
+    "54": {
+      "block": "main_after_if_else@12",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "55": {
+      "op": "return",
+      "stack_out": []
+    },
+    "56": {
+      "block": "main_hello_route@5",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%21#0"
+      ],
+      "stack_out": [
+        "tmp%21#0"
+      ]
+    },
+    "58": {
+      "op": "!",
+      "defined_out": [
+        "tmp%22#0"
+      ],
+      "stack_out": [
+        "tmp%22#0"
+      ]
+    },
+    "59": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "60": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%23#0"
+      ],
+      "stack_out": [
+        "tmp%23#0"
+      ]
+    },
+    "62": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "63": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%25#0"
+      ],
+      "stack_out": [
+        "tmp%25#0"
+      ]
+    },
+    "66": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%26#0"
+      ],
+      "stack_out": [
+        "tmp%26#0"
+      ]
+    },
+    "69": {
+      "callsub": "smart_contracts.event_ticketing.contract.EventTicketing.hello",
+      "op": "callsub hello",
+      "defined_out": [
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0"
+      ]
+    },
+    "72": {
+      "op": "dup",
+      "defined_out": [
+        "to_encode%0#0",
+        "to_encode%0#0 (copy)"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "to_encode%0#0 (copy)"
+      ]
+    },
+    "73": {
+      "op": "len",
+      "defined_out": [
+        "length%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "length%0#0"
+      ]
+    },
+    "74": {
+      "op": "itob",
+      "defined_out": [
+        "as_bytes%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "as_bytes%0#0"
+      ]
+    },
+    "75": {
+      "op": "extract 6 2",
+      "defined_out": [
+        "length_uint16%0#0",
+        "to_encode%0#0"
+      ],
+      "stack_out": [
+        "to_encode%0#0",
+        "length_uint16%0#0"
+      ]
+    },
+    "78": {
+      "op": "swap",
+      "stack_out": [
+        "length_uint16%0#0",
+        "to_encode%0#0"
+      ]
+    },
+    "79": {
+      "op": "concat",
+      "defined_out": [
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0"
+      ]
+    },
+    "80": {
+      "op": "pushbytes 0x151f7c75",
+      "defined_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ],
+      "stack_out": [
+        "encoded_value%0#0",
+        "0x151f7c75"
+      ]
+    },
+    "86": {
+      "op": "swap",
+      "stack_out": [
+        "0x151f7c75",
+        "encoded_value%0#0"
+      ]
+    },
+    "87": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%27#0"
+      ],
+      "stack_out": [
+        "tmp%27#0"
+      ]
+    },
+    "88": {
+      "op": "log",
+      "stack_out": []
+    },
+    "89": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "90": {
+      "op": "return",
+      "stack_out": []
+    },
+    "91": {
+      "block": "main_mint_ticket_route@4",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%17#0"
+      ],
+      "stack_out": [
+        "tmp%17#0"
+      ]
+    },
+    "93": {
+      "op": "!",
+      "defined_out": [
+        "tmp%18#0"
+      ],
+      "stack_out": [
+        "tmp%18#0"
+      ]
+    },
+    "94": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "95": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%19#0"
+      ],
+      "stack_out": [
+        "tmp%19#0"
+      ]
+    },
+    "97": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "98": {
+      "callsub": "smart_contracts.event_ticketing.contract.EventTicketing.mint_ticket",
+      "op": "callsub mint_ticket"
+    },
+    "101": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "102": {
+      "op": "return",
+      "stack_out": []
+    },
+    "103": {
+      "block": "main_create_event_route@3",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "105": {
+      "op": "!",
+      "defined_out": [
+        "tmp%4#0"
+      ],
+      "stack_out": [
+        "tmp%4#0"
+      ]
+    },
+    "106": {
+      "error": "OnCompletion is not NoOp",
+      "op": "assert // OnCompletion is not NoOp",
+      "stack_out": []
+    },
+    "107": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%5#0"
+      ],
+      "stack_out": [
+        "tmp%5#0"
+      ]
+    },
+    "109": {
+      "error": "can only call when not creating",
+      "op": "assert // can only call when not creating",
+      "stack_out": []
+    },
+    "110": {
+      "op": "txna ApplicationArgs 1",
+      "defined_out": [
+        "tmp%7#0"
+      ],
+      "stack_out": [
+        "tmp%7#0"
+      ]
+    },
+    "113": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0"
+      ]
+    },
+    "116": {
+      "op": "txna ApplicationArgs 2",
+      "defined_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%9#0"
+      ]
+    },
+    "119": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0"
+      ]
+    },
+    "122": {
+      "op": "txna ApplicationArgs 3",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%11#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%11#0"
+      ]
+    },
+    "125": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0"
+      ]
+    },
+    "128": {
+      "op": "txna ApplicationArgs 4",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%13#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%13#0"
+      ]
+    },
+    "131": {
+      "op": "extract 2 0",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0"
+      ]
+    },
+    "134": {
+      "op": "txna ApplicationArgs 5",
+      "defined_out": [
+        "reinterpret_bytes[8]%0#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "reinterpret_bytes[8]%0#0"
+      ]
+    },
+    "137": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0"
+      ]
+    },
+    "138": {
+      "op": "txna ApplicationArgs 6",
+      "defined_out": [
+        "reinterpret_bytes[8]%1#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0",
+        "reinterpret_bytes[8]%1#0"
+      ]
+    },
+    "141": {
+      "op": "btoi",
+      "defined_out": [
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0",
+        "tmp%16#0",
+        "tmp%8#0"
+      ],
+      "stack_out": [
+        "tmp%8#0",
+        "tmp%10#0",
+        "tmp%12#0",
+        "tmp%14#0",
+        "tmp%15#0",
+        "tmp%16#0"
+      ]
+    },
+    "142": {
+      "callsub": "smart_contracts.event_ticketing.contract.EventTicketing.create_event",
+      "op": "callsub create_event",
+      "stack_out": []
+    },
+    "145": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "146": {
+      "op": "return",
+      "stack_out": []
+    },
+    "147": {
+      "block": "main_bare_routing@8",
+      "stack_in": [],
+      "op": "txn OnCompletion",
+      "defined_out": [
+        "tmp%28#0"
+      ],
+      "stack_out": [
+        "tmp%28#0"
+      ]
+    },
+    "149": {
+      "op": "bnz main_after_if_else@12",
+      "stack_out": []
+    },
+    "152": {
+      "op": "txn ApplicationID",
+      "defined_out": [
+        "tmp%29#0"
+      ],
+      "stack_out": [
+        "tmp%29#0"
+      ]
+    },
+    "154": {
+      "op": "!",
+      "defined_out": [
+        "tmp%30#0"
+      ],
+      "stack_out": [
+        "tmp%30#0"
+      ]
+    },
+    "155": {
+      "error": "can only call when creating",
+      "op": "assert // can only call when creating",
+      "stack_out": []
+    },
+    "156": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "157": {
+      "op": "return",
+      "stack_out": []
+    },
+    "158": {
+      "subroutine": "smart_contracts.event_ticketing.contract.EventTicketing.create_event",
+      "params": {
+        "name#0": "bytes",
+        "date#0": "bytes",
+        "time#0": "bytes",
+        "location#0": "bytes",
+        "price#0": "uint64",
+        "total#0": "uint64"
+      },
+      "block": "create_event",
+      "stack_in": [],
+      "op": "proto 6 0"
+    },
+    "161": {
+      "op": "frame_dig -6",
+      "defined_out": [
+        "name#0 (copy)"
+      ],
+      "stack_out": [
+        "name#0 (copy)"
+      ]
+    },
+    "163": {
+      "op": "bytec_0 // \"\"",
+      "defined_out": [
+        "\"\"",
+        "name#0 (copy)"
+      ],
+      "stack_out": [
+        "name#0 (copy)",
+        "\"\""
+      ]
+    },
+    "164": {
+      "op": "!=",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "165": {
+      "error": "Event name cannot be empty",
+      "op": "assert // Event name cannot be empty",
+      "stack_out": []
+    },
+    "166": {
+      "op": "frame_dig -5",
+      "defined_out": [
+        "date#0 (copy)"
+      ],
+      "stack_out": [
+        "date#0 (copy)"
+      ]
+    },
+    "168": {
+      "op": "bytec_0 // \"\"",
+      "stack_out": [
+        "date#0 (copy)",
+        "\"\""
+      ]
+    },
+    "169": {
+      "op": "!=",
+      "defined_out": [
+        "tmp%1#0"
+      ],
+      "stack_out": [
+        "tmp%1#0"
+      ]
+    },
+    "170": {
+      "error": "Event date cannot be empty",
+      "op": "assert // Event date cannot be empty",
+      "stack_out": []
+    },
+    "171": {
+      "op": "frame_dig -4",
+      "defined_out": [
+        "time#0 (copy)"
+      ],
+      "stack_out": [
+        "time#0 (copy)"
+      ]
+    },
+    "173": {
+      "op": "bytec_0 // \"\"",
+      "stack_out": [
+        "time#0 (copy)",
+        "\"\""
+      ]
+    },
+    "174": {
+      "op": "!=",
+      "defined_out": [
+        "tmp%2#0"
+      ],
+      "stack_out": [
+        "tmp%2#0"
+      ]
+    },
+    "175": {
+      "error": "Event time cannot be empty",
+      "op": "assert // Event time cannot be empty",
+      "stack_out": []
+    },
+    "176": {
+      "op": "frame_dig -3",
+      "defined_out": [
+        "location#0 (copy)"
+      ],
+      "stack_out": [
+        "location#0 (copy)"
+      ]
+    },
+    "178": {
+      "op": "bytec_0 // \"\"",
+      "stack_out": [
+        "location#0 (copy)",
+        "\"\""
+      ]
+    },
+    "179": {
+      "op": "!=",
+      "defined_out": [
+        "tmp%3#0"
+      ],
+      "stack_out": [
+        "tmp%3#0"
+      ]
+    },
+    "180": {
+      "error": "Event location cannot be empty",
+      "op": "assert // Event location cannot be empty",
+      "stack_out": []
+    },
+    "181": {
+      "op": "frame_dig -2",
+      "defined_out": [
+        "price#0 (copy)"
+      ],
+      "stack_out": [
+        "price#0 (copy)"
+      ]
+    },
+    "183": {
+      "error": "Price must be greater than zero",
+      "op": "assert // Price must be greater than zero",
+      "stack_out": []
+    },
+    "184": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "total#0 (copy)"
+      ],
+      "stack_out": [
+        "total#0 (copy)"
+      ]
+    },
+    "186": {
+      "error": "Total tickets must be greater than zero",
+      "op": "assert // Total tickets must be greater than zero",
+      "stack_out": []
+    },
+    "187": {
+      "op": "pushbytes \"event_name\"",
+      "defined_out": [
+        "\"event_name\""
+      ],
+      "stack_out": [
+        "\"event_name\""
+      ]
+    },
+    "199": {
+      "op": "frame_dig -6",
+      "stack_out": [
+        "\"event_name\"",
+        "name#0 (copy)"
+      ]
+    },
+    "201": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "202": {
+      "op": "pushbytes \"event_date\"",
+      "defined_out": [
+        "\"event_date\""
+      ],
+      "stack_out": [
+        "\"event_date\""
+      ]
+    },
+    "214": {
+      "op": "frame_dig -5",
+      "stack_out": [
+        "\"event_date\"",
+        "date#0 (copy)"
+      ]
+    },
+    "216": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "217": {
+      "op": "pushbytes \"event_time\"",
+      "defined_out": [
+        "\"event_time\""
+      ],
+      "stack_out": [
+        "\"event_time\""
+      ]
+    },
+    "229": {
+      "op": "frame_dig -4",
+      "stack_out": [
+        "\"event_time\"",
+        "time#0 (copy)"
+      ]
+    },
+    "231": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "232": {
+      "op": "pushbytes \"event_location\"",
+      "defined_out": [
+        "\"event_location\""
+      ],
+      "stack_out": [
+        "\"event_location\""
+      ]
+    },
+    "248": {
+      "op": "frame_dig -3",
+      "stack_out": [
+        "\"event_location\"",
+        "location#0 (copy)"
+      ]
+    },
+    "250": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "251": {
+      "op": "pushbytes \"ticket_price\"",
+      "defined_out": [
+        "\"ticket_price\""
+      ],
+      "stack_out": [
+        "\"ticket_price\""
+      ]
+    },
+    "265": {
+      "op": "frame_dig -2",
+      "stack_out": [
+        "\"ticket_price\"",
+        "price#0 (copy)"
+      ]
+    },
+    "267": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "268": {
+      "op": "pushbytes \"total_tickets\"",
+      "defined_out": [
+        "\"total_tickets\""
+      ],
+      "stack_out": [
+        "\"total_tickets\""
+      ]
+    },
+    "283": {
+      "op": "frame_dig -1",
+      "stack_out": [
+        "\"total_tickets\"",
+        "total#0 (copy)"
+      ]
+    },
+    "285": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "286": {
+      "op": "bytec_1 // \"tickets_sold\"",
+      "defined_out": [
+        "\"tickets_sold\""
+      ],
+      "stack_out": [
+        "\"tickets_sold\""
+      ]
+    },
+    "287": {
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "\"tickets_sold\"",
+        "0"
+      ],
+      "stack_out": [
+        "\"tickets_sold\"",
+        "0"
+      ]
+    },
+    "288": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "289": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "290": {
+      "subroutine": "smart_contracts.event_ticketing.contract.EventTicketing.mint_ticket",
+      "params": {},
+      "block": "mint_ticket",
+      "stack_in": [],
+      "op": "intc_1 // 0",
+      "defined_out": [
+        "0"
+      ],
+      "stack_out": [
+        "0"
+      ]
+    },
+    "291": {
+      "op": "bytec_1 // \"tickets_sold\"",
+      "defined_out": [
+        "\"tickets_sold\"",
+        "0"
+      ],
+      "stack_out": [
+        "0",
+        "\"tickets_sold\""
+      ]
+    },
+    "292": {
+      "op": "app_global_get_ex",
+      "defined_out": [
+        "maybe_exists%0#0",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "maybe_exists%0#0"
+      ]
+    },
+    "293": {
+      "error": "check self.tickets_sold exists",
+      "op": "assert // check self.tickets_sold exists",
+      "stack_out": [
+        "maybe_value%0#0"
+      ]
+    },
+    "294": {
+      "op": "intc_0 // 1",
+      "defined_out": [
+        "1",
+        "maybe_value%0#0"
+      ],
+      "stack_out": [
+        "maybe_value%0#0",
+        "1"
+      ]
+    },
+    "295": {
+      "op": "+",
+      "defined_out": [
+        "materialized_values%0#0"
+      ],
+      "stack_out": [
+        "materialized_values%0#0"
+      ]
+    },
+    "296": {
+      "op": "bytec_1 // \"tickets_sold\"",
+      "stack_out": [
+        "materialized_values%0#0",
+        "\"tickets_sold\""
+      ]
+    },
+    "297": {
+      "op": "swap",
+      "stack_out": [
+        "\"tickets_sold\"",
+        "materialized_values%0#0"
+      ]
+    },
+    "298": {
+      "op": "app_global_put",
+      "stack_out": []
+    },
+    "299": {
+      "retsub": true,
+      "op": "retsub"
+    },
+    "300": {
+      "subroutine": "smart_contracts.event_ticketing.contract.EventTicketing.hello",
+      "params": {
+        "name#0": "bytes"
+      },
+      "block": "hello",
+      "stack_in": [],
+      "op": "proto 1 1"
+    },
+    "303": {
+      "op": "pushbytes \"Hello, \"",
+      "defined_out": [
+        "\"Hello, \""
+      ],
+      "stack_out": [
+        "\"Hello, \""
+      ]
+    },
+    "312": {
+      "op": "frame_dig -1",
+      "defined_out": [
+        "\"Hello, \"",
+        "name#0 (copy)"
+      ],
+      "stack_out": [
+        "\"Hello, \"",
+        "name#0 (copy)"
+      ]
+    },
+    "314": {
+      "op": "concat",
+      "defined_out": [
+        "tmp%0#0"
+      ],
+      "stack_out": [
+        "tmp%0#0"
+      ]
+    },
+    "315": {
+      "retsub": true,
+      "op": "retsub"
+    }
+  }
+}

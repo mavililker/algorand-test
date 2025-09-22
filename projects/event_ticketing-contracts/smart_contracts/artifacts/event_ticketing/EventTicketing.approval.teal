@@ -1,0 +1,206 @@
+#pragma version 10
+#pragma typetrack false
+
+// algopy.arc4.ARC4Contract.approval_program() -> uint64:
+main:
+    intcblock 1 0
+    bytecblock "" "tickets_sold"
+    // smart_contracts/event_ticketing/contract.py:5
+    // class EventTicketing(ARC4Contract):
+    txn NumAppArgs
+    bz main_bare_routing@8
+    pushbytess 0x3ea054c8 0x294014fe 0x02bece11 // method "create_event(string,string,string,string,uint64,uint64)void", method "mint_ticket()void", method "hello(string)string"
+    txna ApplicationArgs 0
+    match main_create_event_route@3 main_mint_ticket_route@4 main_hello_route@5
+
+main_after_if_else@12:
+    // smart_contracts/event_ticketing/contract.py:5
+    // class EventTicketing(ARC4Contract):
+    intc_1 // 0
+    return
+
+main_hello_route@5:
+    // smart_contracts/event_ticketing/contract.py:38
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/event_ticketing/contract.py:5
+    // class EventTicketing(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    // smart_contracts/event_ticketing/contract.py:38
+    // @abimethod()
+    callsub hello
+    dup
+    len
+    itob
+    extract 6 2
+    swap
+    concat
+    pushbytes 0x151f7c75
+    swap
+    concat
+    log
+    intc_0 // 1
+    return
+
+main_mint_ticket_route@4:
+    // smart_contracts/event_ticketing/contract.py:33
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    callsub mint_ticket
+    intc_0 // 1
+    return
+
+main_create_event_route@3:
+    // smart_contracts/event_ticketing/contract.py:15
+    // @abimethod()
+    txn OnCompletion
+    !
+    assert // OnCompletion is not NoOp
+    txn ApplicationID
+    assert // can only call when not creating
+    // smart_contracts/event_ticketing/contract.py:5
+    // class EventTicketing(ARC4Contract):
+    txna ApplicationArgs 1
+    extract 2 0
+    txna ApplicationArgs 2
+    extract 2 0
+    txna ApplicationArgs 3
+    extract 2 0
+    txna ApplicationArgs 4
+    extract 2 0
+    txna ApplicationArgs 5
+    btoi
+    txna ApplicationArgs 6
+    btoi
+    // smart_contracts/event_ticketing/contract.py:15
+    // @abimethod()
+    callsub create_event
+    intc_0 // 1
+    return
+
+main_bare_routing@8:
+    // smart_contracts/event_ticketing/contract.py:5
+    // class EventTicketing(ARC4Contract):
+    txn OnCompletion
+    bnz main_after_if_else@12
+    txn ApplicationID
+    !
+    assert // can only call when creating
+    intc_0 // 1
+    return
+
+
+// smart_contracts.event_ticketing.contract.EventTicketing.create_event(name: bytes, date: bytes, time: bytes, location: bytes, price: uint64, total: uint64) -> void:
+create_event:
+    // smart_contracts/event_ticketing/contract.py:15-16
+    // @abimethod()
+    // def create_event(self, name: String, date: String, time: String, location: String, price: UInt64, total: UInt64) -> None:
+    proto 6 0
+    // smart_contracts/event_ticketing/contract.py:17
+    // assert name != "", "Event name cannot be empty"
+    frame_dig -6
+    bytec_0 // ""
+    !=
+    assert // Event name cannot be empty
+    // smart_contracts/event_ticketing/contract.py:18
+    // assert date != "", "Event date cannot be empty"
+    frame_dig -5
+    bytec_0 // ""
+    !=
+    assert // Event date cannot be empty
+    // smart_contracts/event_ticketing/contract.py:19
+    // assert time != "", "Event time cannot be empty"
+    frame_dig -4
+    bytec_0 // ""
+    !=
+    assert // Event time cannot be empty
+    // smart_contracts/event_ticketing/contract.py:20
+    // assert location != "", "Event location cannot be empty"
+    frame_dig -3
+    bytec_0 // ""
+    !=
+    assert // Event location cannot be empty
+    // smart_contracts/event_ticketing/contract.py:21
+    // assert price > UInt64(0), "Price must be greater than zero"
+    frame_dig -2
+    assert // Price must be greater than zero
+    // smart_contracts/event_ticketing/contract.py:22
+    // assert total > UInt64(0), "Total tickets must be greater than zero"
+    frame_dig -1
+    assert // Total tickets must be greater than zero
+    // smart_contracts/event_ticketing/contract.py:24
+    // self.event_name = name
+    pushbytes "event_name"
+    frame_dig -6
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:25
+    // self.event_date = date
+    pushbytes "event_date"
+    frame_dig -5
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:26
+    // self.event_time = time
+    pushbytes "event_time"
+    frame_dig -4
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:27
+    // self.event_location = location
+    pushbytes "event_location"
+    frame_dig -3
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:28
+    // self.ticket_price = price
+    pushbytes "ticket_price"
+    frame_dig -2
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:29
+    // self.total_tickets = total
+    pushbytes "total_tickets"
+    frame_dig -1
+    app_global_put
+    // smart_contracts/event_ticketing/contract.py:30
+    // self.tickets_sold = UInt64(0)
+    bytec_1 // "tickets_sold"
+    intc_1 // 0
+    app_global_put
+    retsub
+
+
+// smart_contracts.event_ticketing.contract.EventTicketing.mint_ticket() -> void:
+mint_ticket:
+    // smart_contracts/event_ticketing/contract.py:35-36
+    // #assert self.tickets_sold < self.total_tickets, "All tickets have been sold"
+    // self.tickets_sold += UInt64(1)
+    intc_1 // 0
+    bytec_1 // "tickets_sold"
+    app_global_get_ex
+    assert // check self.tickets_sold exists
+    intc_0 // 1
+    +
+    bytec_1 // "tickets_sold"
+    swap
+    app_global_put
+    retsub
+
+
+// smart_contracts.event_ticketing.contract.EventTicketing.hello(name: bytes) -> bytes:
+hello:
+    // smart_contracts/event_ticketing/contract.py:38-39
+    // @abimethod()
+    // def hello(self, name: String) -> String:
+    proto 1 1
+    // smart_contracts/event_ticketing/contract.py:40
+    // return "Hello, " + name
+    pushbytes "Hello, "
+    frame_dig -1
+    concat
+    retsub
